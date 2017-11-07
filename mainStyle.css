@@ -1,0 +1,79 @@
+body{
+	padding-top: 70px;
+	background: url("images/back.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.row{margin-bottom: -8%;}
+.navbar{
+	background-image: url("images/menuBack.jpg");
+	background-size: 100% 100%;
+
+}
+.thumb{	
+	width: 27%;
+}
+
+.img-thumbnail{background-color: black;}
+
+.email{width: 50%;}
+h3{text-align: center;}
+
+.emailText{
+	text-align: center;
+	font-size: 150%;
+}
+a{color: #ecf0f1;}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ecf0f1;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+color: #d1ffed;
+}
+
+.nav-tabs{
+	color: #FFFFFF;
+	background-color: transparent;
+	border-bottom: 1px solid #FFFFFF;
+	border-right: 1px solid #FFFFFF;
+	
+	}
+
+.nav-tabs >li>a:hover{
+	color: #FFFFFF;
+	background: url(images/backPanel.jpg);
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+          background:url(images/backPanel.jpg);
+          color: #FFFFFF;}
+
+.tab-content{
+	border:1px solid #FFFFFF;
+
+	 color: #FFFFFF;
+	 background:url(images/backPanel.jpg);
+	}
+
+.tab-pane >p {
+	margin: 5px;
+}
+p{
+	color: #ecf0f1;
+	margin: 10px;}
+.panel{
+	background-color: transparent;
+	background:url(images/backPanel.jpg);
+	color: #FFFFFF;
+}
+.panel .panel-heading{
+	background:url(images/backPanel.jpg);
+	color: #FFFFFF;
+}
+
