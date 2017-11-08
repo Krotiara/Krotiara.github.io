@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="shortcut icon" href="images/icon.png" type="images/image/png">
+		<link rel="shortcut icon" href="icon.png" type="images/image/png">
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media='all' />
 		<link rel="stylesheet" type="text/css" href="css/mainStyle.css">
@@ -17,8 +17,8 @@
 				<button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar-main'>
 					<span class="icon-bar"></span>
 	        		<span class="icon-bar"></span>
+	        		<span class="icon-bar"></span>
 				</button>
-				<a class="navbar=brand menu" href="#">Меню</a>
 			</div>
 			<div class='collapse navbar-collapse' id='navbar-main'>
 				<ul class='nav navbar-nav navbar-left'>
@@ -30,10 +30,10 @@
 			</div>
 		</div>
 	</nav>
-	<div class='container'>
-		<div class="row" style='min-height:400px'> 
-			<div class="col-sm-4 col-md-2 col-lg-2 ">
-	  			<ul class='nav nav-tabs tabs-left'>
+	<div class='container-fluid'>
+		<div class="row " style='min-height:400px'> 
+			<div class="col-sm-4 col-md-4 col-lg-2 col-xs-12 ">
+	  			<ul class='nav nav-tabs navbar-nav tabs-left'>
 					<li class='active'><a href="#tab1" data-toggle='tab'>Общая информация</a></li>
 					<li><a href="#tab2" data-toggle='tab'>Достижения в учебе</a></li>
 					<li><a href="#tab3" data-toggle='tab'>Достижения в спорте</a></li>
@@ -41,7 +41,8 @@
 					<li><a href="#tab5" data-toggle='tab'>Моё Мировоззрение</a></li>
 		  		</ul>
 	  		</div>
-	  		<div class='col-sm-6 col-md-6 col-lg-6'>
+	  		<!--md - для телефонов!!!! sm для планшетов-->
+	  		<div class='col-sm-4 col-md-4 col-lg-6 col-xs-12'>
 		  		<div class='tab-content'>
 		  				<div class='tab-pane active' id='tab1'>
 		  					<ul>
@@ -79,16 +80,16 @@
 		  					</ul>
 		  				</div>
 		  				<div class='tab-pane' id='tab5'>
-		  					<p>Реалист. Не поддерживаю никакие стороны. Предпочитаю считаться только со своим мнением.<br>Отношение к людям складывается из того,как они относятся ко мне.<br>Не приемлю для себя курение и распитие алкогольных напитков,никогда не пил и не курил.<br>Ценю пунктуальность, вежливость, стойкость в тяжелых ситуациях. Крайне негативно отношусь к необязательности и лжи, предательству.</p>
+		  					<p>Реалист. Не поддерживаю никакие стороны. Препочитаю считаться только со своим мнением.<br>Отношение к людям складывается из того,как они относятся ко мне.<br>Не приемлю для себя курение и распитие алкогольных напитков,никогда не пил и не курил.<br>Ценю пунктуальность, вежливость, стойкость в тяжелых ситуациях. Крайне негативно отношусь к необязательности и лжи, предательству.</p>
 		  				</div>
 			  	</div>
 			</div>
-			<div class='col-sm-2 col-md-4 col-lg-4 thumb'>
+			<div class='col-sm-4 col-md-4 col-lg-4 col-xs-12 thumb' style='min-width:300px' >
 				<img src="images/MainPhoto.jpg" class="img-responsive img-rounded img-thumbnail" alt="Моё фото">
 			</div>
 		</div>
-		<div class="row" style='max-height:400px'>
-			<div class="col-sm-12 col-md-6 col-lg-6 ">
+		<div class="row">
+			<div class="col-sm-12 col-md-6 col-lg-6 col-xs-12">
 				<div class='panel panel-default'>
 					<div class='panel-heading'>Мои контакты</div>
 					<div class='panel-body'>
