@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+<!--https://giphy.com/gifs/y1ZBcOGOOtlpC/html5-->
 <html>
 	<head>
-		<!-- Обсепечение надлежащего рендеринга и изменение размера касанием на мобильном устройстве-->
 		<link rel="shortcut icon" href="images/icon.png" type="image/png">
 		<meta charset="utf-8">
 		<meta name='viewport' content='width=device-width,initial-scale=1'>
@@ -12,6 +12,7 @@
 		<title>Моё портфолио</title>
 	</head>
 	<body>
+		<img id='load' src="images/loading.jpg">
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class='container-fluid'>
 				<div class='navbar-header'>
@@ -32,38 +33,128 @@
 			</div>
 		</nav>
 		<div class="container">
-			<div class="row h-50">
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/1.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/2.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/3.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/4.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/5.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/6.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/7.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/8.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/9.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/10.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/11.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
-				<div class="col-md-3 col-sm-4 col-xs-6 thumb">
-					<img src="images/12.jpg" class='img-responsive img-thumbnail' style="max-height:220px" alt=""></div>
+			<header><h3>Добро пожаловать в мою галлерею</h3></header>
+			<section>
+				<div class="row">
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="1">
+						<img src="images/Small/small1.jpg" onclick='openGalleryBlock();openSlide(1)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="2">
+						<img src="images/Small/small2.jpg" onclick='openGalleryBlock();openSlide(2)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="3">
+						<img src="images/Small/small3.jpg" onclick='openGalleryBlock();openSlide(3)'   alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="4">
+						<img src="images/Small/small4.jpg" onclick='openGalleryBlock();openSlide(4)' class=' img-thumbnail ' alt=""></div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="5">
+						<img src="images/Small/small5.jpg" onclick='openGalleryBlock();openSlide(5)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="6">
+						<img src="images/Small/small6.jpg" onclick='openGalleryBlock();openSlide(6)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="7">
+						<img src="images/Small/small7.jpg" onclick='openGalleryBlock();openSlide(7)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="8">
+						<img src="images/Small/small8.jpg" onclick='openGalleryBlock();openSlide(8)' alt=""></div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="9">
+						<img src="images/Small/small9.jpg" onclick='openGalleryBlock();openSlide(9)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="10">
+						<img src="images/Small/small10.jpg" onclick='openGalleryBlock();openSlide(10)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="11">
+						<img src="images/Small/small11.jpg" onclick='openGalleryBlock();openSlide(11)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="12">
+						<img src="images/Small/small12.jpg" onclick='openGalleryBlock();openSlide(12)'  alt=""></div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="13">
+						<img src="images/Small/small13.jpg" onclick='openGalleryBlock();openSlide(13)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="14">
+						<img src="images/Small/small14.jpg" onclick='openGalleryBlock();openSlide(14)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="15">
+						<img src="images/Small/small15.jpg" onclick='openGalleryBlock();openSlide(15)'  alt=""></div>
+					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="16">
+						<img src="images/Small/small16.jpg" onclick='openGalleryBlock();openSlide(16)'  alt=""></div>
+				</div>
+			</section>
+		</div>
+
+		<div id='gBlock' class='galleryBlock'>
+			<div class='galleryBlock-content'>
+				<div class='slide'>
+					<div class = 'photoNumber'>1 / 16</div>
+					<img src="images/Big/test.jpg"  style="width:100%" alt= "Это я" >
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>2 / 16</div>
+					<img src="images/Big/2.jpg"  style="width:100%" alt="Прага">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>3 / 16</div>
+					<img src="images/Big/3.jpg"  style="width:100%" alt="Дом Джульетты в Вероне">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>4 / 16</div>
+					<img src="images/Big/4.jpg"  style="width:100%" alt="Да,я на коне (С)">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>5 / 16</div>
+					<img src="images/Big/5.jpg"  style="width:100%" alt="Канны">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>6 / 16</div>
+					<img src="images/Big/6.jpg"  style="width:100%" alt="Венеция">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>7 / 16</div>
+					<img src="images/Big/7.jpg"  style="width:100%" alt="Монако">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>8 / 16</div>
+					<img src="images/Big/8.jpg"  style="width:100%" alt="Мой верный друг Макси">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>9 / 16</div>
+					<img src="images/Big/9.jpg"  style="width:100%" alt="Лувр">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>10 / 16</div>
+					<img src="images/Big/10.jpg"  style="width:100%" alt="Диснейлэнд">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>11 / 16</div>
+					<img src="images/Big/11.jpg"  style="width:100%" alt="Ночной Париж">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>12 / 16</div>
+					<img src="images/Big/12.jpg"  style="width:100%" alt="Польша">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>13 / 16</div>
+					<img src="images/Big/13.jpg"  style="width:100%" alt="Мемориал памяти Советским солдатам в Берлине">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>14 / 16</div>
+					<img src="images/Big/14.jpg"  style="width:100%" alt="Чехия">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>15 / 16</div>
+					<img src="images/Big/15.jpg"  style="width:100%" alt="Ницца">
+				</div>
+				<div class='slide'>
+					<div class = 'photoNumber'>16 / 16</div>
+					<img src="images/Big/16.jpg"  style="width:100%" alt="Ницца,залив">
+				</div>
+
+		<div class='sliderNav'>
+			<span class='next'><b> &larr; Ctrl</b><a  onclick='changeSlide(-1)'>назад</a></span>
+			<span class='prev'><a  onclick='changeSlide(1)'>вперед</a><b>Ctrl &rarr; </b></span>
+			<span class='close' onclick='closeGalleryBlock()'>&#10008;</span>
+		</div>
+
+				
+
 			</div>
 		</div>
+		<script type="text/javascript" src='js/galleryScript.js'></script>
 	</body>
 </html>
