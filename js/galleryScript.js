@@ -1,14 +1,34 @@
 function openGalleryBlock()
 {
+	var slides = document.getElementsByClassName('slide');
+	for(i=0;i<slides.length;i++)
+	{
+		slides[i].style.display='none';
+		slides[i].getElementsByClassName('photoNumber')[0].style.display='none';
+		slides[i].getElementsByClassName('1')[0].style.display='none';
+	}
 	document.getElementById('gBlock').style.display='block';
+}
+
+function openHelp()
+{
+	var help = document.getElementById('help');
+	help.style.display = 'block';
+}
+
+function closeHelp()
+{
+	var help = document.getElementById('help');
+	help.style.display = 'none';
 }
 
 function closeGalleryBlock()
 {
 	document.getElementById('gBlock').style.display='none';
 }
+
 var currentIndex = 1;
-showSlide(currentIndex);
+
 
 function openSlide(x)
 {
@@ -30,13 +50,20 @@ function showSlide(index)
 	for(i=0;i<slides.length;i++)
 	{
 		slides[i].style.display='none';
+		slides[i].getElementsByClassName('photoNumber')[0].style.display='none';
+		slides[i].getElementsByClassName('1')[0].style.display='none';
+
 	}
 	slides[currentIndex-1].style.display='block';
+	slides[currentIndex-1].getElementsByClassName('photoNumber')[0].style.display='block';
+	slides[currentIndex-1].getElementsByClassName('1')[0].style.display='block';
 }
 
 document.addEventListener('keydown',(event) =>
 {
 	const keyName = event.Key
+	event.preventDefault();
+	
 	if(event.ctrlKey)
 	{
 		if(event.keyCode == '37')
@@ -47,6 +74,14 @@ document.addEventListener('keydown',(event) =>
 		{
 			changeSlide(1);
 		}
+	}
+	if(event.keyCode == '112')
+	{
+		openHelp();
+	}
+	if(event.keyCode =='27')
+	{
+		closeHelp();
 	}
 } ,false);
 
@@ -65,9 +100,12 @@ document.addEventListener('keyup',(event)=>
 	{
 		moveRight();
 	}
+	
 },false)
 
-for (var i =0; i<document.images.length;i++)
+
+
+/*for (var i =0; i<document.images.length;i++)
 {
 	downloadingImage = new Image();
 	downloadingImage.onload = function()
@@ -75,10 +113,7 @@ for (var i =0; i<document.images.length;i++)
 		document.getElementById('load').src = this.src;
 	}
 	downloadingImage.src = document.images[i].src;
-}
-
-
-
+}*/
 
 function moveLeft()
 {

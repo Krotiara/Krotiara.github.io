@@ -12,7 +12,20 @@
 		<title>Моё портфолио</title>
 	</head>
 	<body>
-		<img id='load' src="images/loading.jpg">
+		<div id='help' class ='help'>
+			<div class='overlay'></div>
+			<div class='title'>
+				<h4>Помощь</h4>
+				<div class='content'>
+					<p>1) При нажатии на картинку она откроется откроется в полном размере</p>
+					<p>2)Вы можете пролистывать фотографии клавишами Ctrl+left или Ctrl+right</p>
+					<p>3)Чтобы закрыть фотографию,нажмите крестик в верхнем правом углу фотографии или нажмите ESC</p>
+					<p>4)Чтобы закрыть это окно, нажмите крестик в верхнем правом углу фотографии или нажмите ESC</p>
+				</div>
+				<span class='close' onclick='closeHelp()'>&#10008;</span>
+			</div>
+			
+		</div>
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class='container-fluid'>
 				<div class='navbar-header'>
@@ -28,6 +41,7 @@
 						<li><a href="gallery.html">Галерея</a></li>
 						<li><a href="https://vk.com/math_mech">Страница МатМеха</a></li>
 						<li><a href="https://urfu.ru/ru/">Сайт УрФу</a></li>
+						<li><a onclick='openHelp()'>Помощь(F1)</a></li>
 					</ul>
 				</div>
 			</div>
@@ -43,7 +57,7 @@
 					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="3">
 						<img src="images/Small/small3.jpg" onclick='openGalleryBlock();openSlide(3)'   alt=""></div>
 					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="4">
-						<img src="images/Small/small4.jpg" onclick='openGalleryBlock();openSlide(4)' class=' img-thumbnail ' alt=""></div>
+						<img src="images/Small/small4.jpg" onclick='openGalleryBlock();openSlide(4)'  alt=""></div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 col-sm-3 col-xs-6 col-lg-3 thumb"   id="5">
@@ -82,67 +96,67 @@
 			<div class='galleryBlock-content'>
 				<div class='slide'>
 					<div class = 'photoNumber'>1 / 16</div>
-					<img src="images/Big/test.jpg"  style="width:100%" alt= "Это я" >
+					<img class="1" src="images/Big/1.jpg" style="width:100%" alt= "Это я" >
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>2 / 16</div>
-					<img src="images/Big/2.jpg"  style="width:100%" alt="Прага">
+					<img class='1' src="images/Big/2.jpg"  style="width:100%" alt="Прага">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>3 / 16</div>
-					<img src="images/Big/3.jpg"  style="width:100%" alt="Дом Джульетты в Вероне">
+					<img class='1' src="images/Big/3.jpg"  style="width:100%" alt="Дом Джульетты в Вероне">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>4 / 16</div>
-					<img src="images/Big/4.jpg"  style="width:100%" alt="Да,я на коне (С)">
+					<img class='1' src="images/Big/4.jpg"  style="width:100%" alt="Да,я на коне (С)">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>5 / 16</div>
-					<img src="images/Big/5.jpg"  style="width:100%" alt="Канны">
+					<img class='1' src="images/Big/5.jpg"  style="width:100%" alt="Канны">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>6 / 16</div>
-					<img src="images/Big/6.jpg"  style="width:100%" alt="Венеция">
+					<img class='1' src="images/Big/6.jpg"  style="width:100%" alt="Венеция">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>7 / 16</div>
-					<img src="images/Big/7.jpg"  style="width:100%" alt="Монако">
+					<img class='1' src="images/Big/7.jpg"  style="width:100%" alt="Монако">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>8 / 16</div>
-					<img src="images/Big/8.jpg"  style="width:100%" alt="Мой верный друг Макси">
+					<img class='1' src="images/Big/8.jpg"  style="width:100%" alt="Мой верный друг Макси">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>9 / 16</div>
-					<img src="images/Big/9.jpg"  style="width:100%" alt="Лувр">
+					<img class='1' src="images/Big/9.jpg"  style="width:100%" alt="Лувр">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>10 / 16</div>
-					<img src="images/Big/10.jpg"  style="width:100%" alt="Диснейлэнд">
+					<img class='1' src="images/Big/10.jpg"  style="width:100%" alt="Диснейлэнд">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>11 / 16</div>
-					<img src="images/Big/11.jpg"  style="width:100%" alt="Ночной Париж">
+					<img class='1' src="images/Big/11.jpg"  style="width:100%" alt="Ночной Париж">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>12 / 16</div>
-					<img src="images/Big/12.jpg"  style="width:100%" alt="Польша">
+					<img class='1' src="images/Big/12.jpg"  style="width:100%" alt="Польша">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>13 / 16</div>
-					<img src="images/Big/13.jpg"  style="width:100%" alt="Мемориал памяти Советским солдатам в Берлине">
+					<img class='1' src="images/Big/13.jpg"  style="width:100%" alt="Мемориал памяти Советским солдатам в Берлине">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>14 / 16</div>
-					<img src="images/Big/14.jpg"  style="width:100%" alt="Чехия">
+					<img class='1' src="images/Big/14.jpg"  style="width:100%" alt="Чехия">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>15 / 16</div>
-					<img src="images/Big/15.jpg"  style="width:100%" alt="Ницца">
+					<img class='1' src="images/Big/15.jpg"  style="width:100%" alt="Ницца">
 				</div>
 				<div class='slide'>
 					<div class = 'photoNumber'>16 / 16</div>
-					<img src="images/Big/16.jpg"  style="width:100%" alt="Ницца,залив">
+					<img class='1' src="images/Big/16.jpg"  style="width:100%" alt="Ницца,залив">
 				</div>
 
 		<div class='sliderNav'>
