@@ -1,3 +1,36 @@
+var startHref = '';
+var currentIndex = 1;
+window.onload=function(){
+	startHref = location.href;
+	if(startHref.indexOf('#') != -1)
+	{
+		var index = startHref.indexOf('#');
+		currentIndex = parseInt(startHref.substring(index+1,startHref.length));
+		openGalleryBlock();
+		openSlide(currentIndex,true);
+	}
+	else
+	{
+		history.pushState('changeSlide',null,startHref);
+	}
+		
+}
+
+
+
+if(readCookie('background'))
+{
+	var backURL = readCookie('background');
+	document.body.style.background = backURL;
+	document.getElementsByClassName('galleryBlock')[0].style.background = backURL;
+}
+else
+{
+	//document.body.style.background = 'url("../TaskOne/images/back.jpg")';
+	//document.getElementsByClassName('galleryBlock')[0].style.background = 'url("../TaskOne/images/back.jpg") no-repeat center';
+}
+	
+
 function openGalleryBlock()
 {
 	var slides = document.getElementsByClassName('slide');
@@ -8,6 +41,7 @@ function openGalleryBlock()
 		slides[i].getElementsByClassName('1')[0].style.display='none';
 	}
 	document.getElementById('gBlock').style.display='block';
+
 }
 
 function openHelp()
@@ -22,27 +56,37 @@ function closeHelp()
 	help.style.display = 'none';
 }
 
-function closeGalleryBlock()
+function closeGalleryBlock(flag)
 {
 	document.getElementById('gBlock').style.display='none';
+	if (flag)
+	{
+		startHref = location.href;
+		if(startHref.indexOf('#') != -1)
+		{
+			var index = startHref.indexOf('#');
+			startHref = startHref.substring(0,index);
+		}
+	
+		history.pushState('changeSlide',null,startHref);
+	}
+	
 }
 
-var currentIndex = 1;
-
-
-function openSlide(x)
+function openSlide(x,flag)
 {
 	currentIndex = x;
-	showSlide(currentIndex);
+	showSlide(currentIndex,flag);
 }
 function changeSlide(offset)
 {
 	currentIndex += offset;
-	showSlide(currentIndex);
+	showSlide(currentIndex,true);
 }
 
-function showSlide(index)
+function showSlide(index,flag)
 {
+	//var startHref = location.href;
 	var slides = document.getElementsByClassName('slide');
 	var i;
 	if(index > slides.length) {currentIndex = 1}
@@ -54,16 +98,20 @@ function showSlide(index)
 		slides[i].getElementsByClassName('1')[0].style.display='none';
 
 	}
+	var path = '#' + (slides[currentIndex-1].id).toString();
 	slides[currentIndex-1].style.display='block';
 	slides[currentIndex-1].getElementsByClassName('photoNumber')[0].style.display='block';
 	slides[currentIndex-1].getElementsByClassName('1')[0].style.display='block';
+	if (flag)
+	{
+		history.pushState('changeSlide',null,path)
+	}
+	
 }
 
-document.addEventListener('keydown',(event) =>
+document.addEventListener('keydown',(event)=>
 {
 	const keyName = event.Key
-	event.preventDefault();
-	
 	if(event.ctrlKey)
 	{
 		if(event.keyCode == '37')
@@ -75,8 +123,9 @@ document.addEventListener('keydown',(event) =>
 			changeSlide(1);
 		}
 	}
-	if(event.keyCode == '112')
+	if(event.keyCode == '112' || event.keyCode == '63236-47') //Safari
 	{
+		event.preventDefault()
 		openHelp();
 	}
 	if(event.keyCode =='27')
@@ -90,38 +139,125 @@ document.addEventListener('keyup',(event)=>
 	const keyName = event.key
 	if(keyName==='Escape')
 	{
-		closeGalleryBlock();
-	}
-	if(event.keyCode =='37')
-	{
-		moveLeft();
-	}
-	if(event.keyCode =='39')
-	{
-		moveRight();
+		closeGalleryBlock(true);
 	}
 	
 },false)
 
 
-
-/*for (var i =0; i<document.images.length;i++)
+/*var images = new Array();
+var args = [];
+var way = '../TaskOne/images/Big/'
+for(var j=1;j<=16;j++)
 {
-	downloadingImage = new Image();
-	downloadingImage.onload = function()
+	var endWay = j.toString() + '.jpg';
+	args.push(way+endWay);
+}
+*/
+
+//preload(...args)
+/*function preload()
+{
+	for(var j=0;j<preload.arguments.length;j++)
 	{
-		document.getElementById('load').src = this.src;
+		images[j] = new Image();
+		images[j].src = preload.arguments[j];
 	}
-	downloadingImage.src = document.images[i].src;
 }*/
 
-function moveLeft()
+
+
+function SetStartImg()
 {
+	var slides = document.getElementsByClassName('slide');
+	var miniSlides = document.getElementsByClassName('thumb');
+	var i;
+	for(i=0;i<slides.length;i++)
+	{
+		if(slides[i].getElementsByClassName('1')[0].style.display === 'block')
+		{
+			var startImageSRC = slides[0].getElementsByClassName('1')[0].src;
+			var startMiniSrc = miniSlides[0].getElementsByClassName('mini')[0].src;
+			 
+			slides[0].getElementsByClassName('1')[0].src = slides[i].getElementsByClassName('1')[0].src;
+			slides[i].getElementsByClassName('1')[0].src = startImageSRC;
+			miniSlides[0].getElementsByClassName('mini')[0].src = miniSlides[i].getElementsByClassName('mini')[0].src
+			miniSlides[i].getElementsByClassName('mini')[0].src = startMiniSrc;
+			//currentIndex = 1;
+			//showSlide(currentIndex);
+			
+			break;
+		}
+	}
 	
 }
-function moveRight()
+function SetImgToBack()
 {
+	var slides = document.getElementsByClassName('slide');
+	var i;
+	var currentImage='';
+	for(i=0;i<slides.length;i++)
+	{
+		if(slides[i].getElementsByClassName('1')[0].style.display === 'block')
+		{
+			var currentImage = slides[i].getElementsByClassName('1')[0].src;
 
+		}
+
+	}
+	var url = "url(\'"+ currentImage +"\')";
+	document.body.style.background = url +'no-repeat center';
+	document.body.style.backgroundSize = "100% 100%";
+	document.getElementsByClassName('galleryBlock')[0].style.background = url + 'no-repeat center';
+	document.getElementsByClassName('galleryBlock')[0].style.backgroundSize = "100% 100%";
+	console.log(document.body.style)
+	createCookie('background',url,1);
 }
 
+function createCookie(name,value,days)
+{
+	if(days)
+	{
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = ", expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie =  name+"="+value+expires+", path=/";
+}
 
+function readCookie(name)
+{
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(',');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+	}
+
+
+
+function eraseCookie(name) {
+createCookie(name,"",-1);
+}
+
+window.onpopstate = function(event)
+{
+	
+	var currentHref = event.currentTarget.location.href;
+	if(currentHref.indexOf('#') != -1)
+	{
+		var index = currentHref.indexOf('#');
+		currentIndex = parseInt(currentHref.substring(index+1,currentHref.length));
+		openGalleryBlock();
+		openSlide(currentIndex,false);
+	}
+	else
+	{
+		closeGalleryBlock(false);
+	}
+
+}

@@ -1,6 +1,6 @@
 body{
 	padding-top: 70px;
-	background: url("../images/back.jpg");
+	background : url("../images/back.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
     background-position: center;
@@ -46,6 +46,7 @@ a{color: #ecf0f1;}
 	max-height: 500px;
 	border-radius: 5px;
 	border: 3px solid #191970;
+	background: transparent url("../images/loading.jpg") center no-repeat;
 	
 }
 
@@ -58,7 +59,7 @@ a{color: #ecf0f1;}
 }
 
 .galleryBlock{
-	background: url("../images/back.jpg");
+	background:url("../images/back.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
     background-position: center;
@@ -79,13 +80,10 @@ a{color: #ecf0f1;}
 	
 	position: relative;
 	margin: auto;
-	min-height: 30%;
-	max-height: 60%;
 	max-width: 60%;
 	padding: 0;
 
 }
-
 
 .sliderNav span.close
 {
@@ -132,8 +130,8 @@ a{color: #ecf0f1;}
 	cursor: pointer;
 	color:#FFFFF0;
 	width: auto;
-	
 	font-size: 30px;
+	bottom: 3%;
 	
 
 }
@@ -149,6 +147,24 @@ text-decoration: none;
 color: #87CEEB; 
 } 
 .previous:hover,.next:hover{color: black;}
+
+.sliderNav button.StartImg,
+.sliderNav button.SetBackground
+{
+	background-color: #FFFFF0;
+	font-size: 12px;
+	border-radius: 12px;
+	color: black;
+	border: 3px solid #191970;
+	width: 100px;
+	position: absolute;
+	cursor: pointer;
+	margin-top: 5px;
+	
+
+}
+.sliderNav button.StartImg{left:110px;}
+.sliderNav button.SetBackground{}
 
 .photoNumber
 {
