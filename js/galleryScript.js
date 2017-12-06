@@ -24,11 +24,18 @@ if(readCookie('background'))
 	document.body.style.background = backURL;
 	document.getElementsByClassName('galleryBlock')[0].style.background = backURL;
 }
-else
+
+if(readCookie('StartImage'))
 {
-	//document.body.style.background = 'url("../TaskOne/images/back.jpg")';
-	//document.getElementsByClassName('galleryBlock')[0].style.background = 'url("../TaskOne/images/back.jpg") no-repeat center';
+	var indexImg = readCookie('StartImage');
+	var slides = document.getElementsByClassName('slide');
+	var miniSlides = document.getElementsByClassName('thumb');
+	slides[0].getElementsByClassName('1')[0].src = slides[i].getElementsByClassName('1')[0].src;
+	slides[i].getElementsByClassName('1')[0].src = startImageSRC;
+	miniSlides[0].getElementsByClassName('mini')[0].src = miniSlides[i].getElementsByClassName('mini')[0].src
+	miniSlides[i].getElementsByClassName('mini')[0].src = startMiniSrc;
 }
+
 	
 
 function openGalleryBlock()
@@ -106,7 +113,23 @@ function showSlide(index,flag)
 	{
 		history.pushState('changeSlide',null,path)
 	}
-	
+	if (currentIndex == slides.length)
+	{
+		preload(slides,0);
+	}
+	else
+	{
+		preload(slides,currentIndex);
+	}
+}
+
+var images = new Array();
+
+function preload(slides,index)
+{
+	var image = new Image();
+	image.src = slides[index].getElementsByClassName('1')[0].src;
+	images.push(image);
 }
 
 document.addEventListener('keydown',(event)=>
@@ -145,27 +168,6 @@ document.addEventListener('keyup',(event)=>
 },false)
 
 
-/*var images = new Array();
-var args = [];
-var way = '../TaskOne/images/Big/'
-for(var j=1;j<=16;j++)
-{
-	var endWay = j.toString() + '.jpg';
-	args.push(way+endWay);
-}
-*/
-
-//preload(...args)
-/*function preload()
-{
-	for(var j=0;j<preload.arguments.length;j++)
-	{
-		images[j] = new Image();
-		images[j].src = preload.arguments[j];
-	}
-}*/
-
-
 
 function SetStartImg()
 {
@@ -183,6 +185,7 @@ function SetStartImg()
 			slides[i].getElementsByClassName('1')[0].src = startImageSRC;
 			miniSlides[0].getElementsByClassName('mini')[0].src = miniSlides[i].getElementsByClassName('mini')[0].src
 			miniSlides[i].getElementsByClassName('mini')[0].src = startMiniSrc;
+			createCookie('StartImage',i,1);
 			//currentIndex = 1;
 			//showSlide(currentIndex);
 			
