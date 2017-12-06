@@ -23,7 +23,14 @@ if(readCookie('background'))
 {
 	var backURL = readCookie('background');
 	document.body.style.background = backURL;
+	document.body.style.backgroundSize = "100% 100%";
 	document.getElementsByClassName('galleryBlock')[0].style.background = backURL;
+	document.getElementsByClassName('galleryBlock')[0].style.backgroundSize = "100% 100%";
+	
+}
+else
+{
+
 }
 
 if(readCookie('StartImage'))
@@ -35,6 +42,10 @@ if(readCookie('StartImage'))
 	slides[indexImg].getElementsByClassName('1')[0].src = startImageSRC;
 	miniSlides[0].getElementsByClassName('mini')[0].src = miniSlides[indexImg].getElementsByClassName('mini')[0].src
 	miniSlides[indexImg].getElementsByClassName('mini')[0].src = startMiniSrc;
+}
+else
+{
+
 }
 
 	
