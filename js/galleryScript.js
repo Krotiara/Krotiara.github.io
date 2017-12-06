@@ -1,6 +1,10 @@
 var startHref = '';
 var currentIndex = 1;
 var images = new Array();
+document.getElementsByClassName('helpMe')[0].onclick = function()
+	{
+		openHelp();
+	}
 window.onload=function(){
 	startHref = location.href;
 	if(startHref.indexOf('#') != -1)
@@ -14,6 +18,7 @@ window.onload=function(){
 	{
 		history.pushState('changeSlide',null,startHref);
 	}
+
 		
 }
 
@@ -36,6 +41,8 @@ if(readCookie('StartImage'))
 	var indexImg = readCookie('StartImage');
 	var slides = document.getElementsByClassName('slide');
 	var miniSlides = document.getElementsByClassName('thumb');
+	var startImageSRC = slides[0].getElementsByClassName('1')[0].src;
+	var startMiniSrc = miniSlides[0].getElementsByClassName('mini')[0].src;
 	slides[0].getElementsByClassName('1')[0].src = slides[indexImg].getElementsByClassName('1')[0].src;
 	slides[indexImg].getElementsByClassName('1')[0].src = startImageSRC;
 	miniSlides[0].getElementsByClassName('mini')[0].src = miniSlides[indexImg].getElementsByClassName('mini')[0].src
@@ -140,7 +147,7 @@ function preload(slides,index)
 	images.push(image);
 }
 
-document.addEventListener('keydown',(event)=>
+document.addEventListener('keydown',function(event)
 {
 	const keyName = event.Key
 	if(event.ctrlKey)
@@ -156,7 +163,7 @@ document.addEventListener('keydown',(event)=>
 	}
 	if(event.keyCode == '112' || event.keyCode == '63236-47') //Safari
 	{
-		event.preventDefault()
+		event.preventDefault();
 		openHelp();
 	}
 	if(event.keyCode =='27')
@@ -165,7 +172,7 @@ document.addEventListener('keydown',(event)=>
 	}
 } ,false);
 
-document.addEventListener('keyup',(event)=>
+document.addEventListener('keyup',function(event)
 {
 	const keyName = event.key
 	if(keyName==='Escape')
@@ -174,6 +181,10 @@ document.addEventListener('keyup',(event)=>
 	}
 	
 },false)
+
+window.onhelp =function() {
+    return false;
+}
 
 
 
