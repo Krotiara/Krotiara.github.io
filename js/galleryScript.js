@@ -30,10 +30,10 @@ if(readCookie('StartImage'))
 	var indexImg = readCookie('StartImage');
 	var slides = document.getElementsByClassName('slide');
 	var miniSlides = document.getElementsByClassName('thumb');
-	slides[0].getElementsByClassName('1')[0].src = slides[i].getElementsByClassName('1')[0].src;
-	slides[i].getElementsByClassName('1')[0].src = startImageSRC;
-	miniSlides[0].getElementsByClassName('mini')[0].src = miniSlides[i].getElementsByClassName('mini')[0].src
-	miniSlides[i].getElementsByClassName('mini')[0].src = startMiniSrc;
+	slides[0].getElementsByClassName('1')[0].src = slides[indexImg].getElementsByClassName('1')[0].src;
+	slides[indexImg].getElementsByClassName('1')[0].src = startImageSRC;
+	miniSlides[0].getElementsByClassName('mini')[0].src = miniSlides[indexImg].getElementsByClassName('mini')[0].src
+	miniSlides[indexImg].getElementsByClassName('mini')[0].src = startMiniSrc;
 }
 
 	
