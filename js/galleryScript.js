@@ -1,5 +1,6 @@
 var startHref = '';
 var currentIndex = 1;
+var images = new Array();
 window.onload=function(){
 	startHref = location.href;
 	if(startHref.indexOf('#') != -1)
@@ -122,8 +123,6 @@ function showSlide(index,flag)
 		preload(slides,currentIndex);
 	}
 }
-
-var images = new Array();
 
 function preload(slides,index)
 {
