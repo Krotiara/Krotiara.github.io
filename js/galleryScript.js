@@ -17,8 +17,6 @@ window.onload=function(){
 		
 }
 
-
-
 if(readCookie('background'))
 {
 	var backURL = readCookie('background');
@@ -223,7 +221,6 @@ function SetImgToBack()
 	document.body.style.backgroundSize = "100% 100%";
 	document.getElementsByClassName('galleryBlock')[0].style.background = url + 'no-repeat center';
 	document.getElementsByClassName('galleryBlock')[0].style.backgroundSize = "100% 100%";
-	console.log(document.body.style)
 	createCookie('background',url,1);
 }
 
