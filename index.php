@@ -1,4 +1,40 @@
 <!DOCTYPE html>
+
+<?php
+include_once "mysql_connect.php";
+#$a = "SELECT convert(varchar, " . getdate() . ", 108) outputs as hh:mm:ss";
+#$newtime = mysqli_query($con,"SELECT convert(varchar, getdate(), 108) outputs as hh:mm:ss");
+#$lasttime = mysqli_query($con,"SELECT lastupdate FROM hitcounter WHERE id='1'");
+#numtime = mysqli_num_rows($lasttime);
+
+#$row = mysqli_fetch_array($newtime);
+#$rowtwo = mysqli_fetch_array($lasttime);
+#$zapros = "SELECT DATEDIFF(MINUTE, ". $row['lastupdate'] . " , " . $rowtwo['lastupdate'] . ") AS MinuteDiff";
+#$delta = mysqli_query($con,$zapros);
+#$deltaP = mysqli_fetch_array($delta);
+#$deltatime = $deltaP['MinuteDiff'];
+#echo "1";
+#echo $rowtwo['lastupdate'];
+#echo "2";
+#echo $row['lastupdate'];
+#echo "3";
+#echo $deltatime;
+#if($deltatime > 1)
+#{
+	mysqli_query($con,"UPDATE hitcounter SET `views` = `views`+1 WHERE id='1'");
+	#$zaprostwo = "UPDATE hitcounter SET `lastupdate` = " . $newtime ." WHERE id='1'";
+	#mysqli_query($con,$zaprostwo);
+
+#}
+$result = mysqli_query($con,"SELECT * FROM hitcounter WHERE id='1'");
+$numResult = mysqli_num_rows($result);
+
+
+#mysqli_query($con,"SElect * From hitcounter");
+
+
+?>
+
 <html>
 	<head>
 		<link rel="shortcut icon" href="images/icon.png" type="image/png">
@@ -23,10 +59,20 @@
 			</div>
 			<div class='collapse navbar-collapse' id='navbar-main'>
 				<ul class='nav navbar-nav navbar-left'>
-					<li><a href="index.html">Обо мне</a></li>
-					<li><a href="gallery.html">Галерея</a></li>
+					<li><a href="index.php">Обо мне</a></li>
+					<li><a href="gallery.php">Галерея</a></li>
 					<li><a href="https://vk.com/math_mech">Страница МатМеха</a></li>
 					<li><a href="https://urfu.ru/ru/">Сайт УрФу</a></li>
+					<li class = 'counter'><p>Количество посещений:<?php
+						for($i=0;$i < $numResult;$i++)
+							{
+								$row = mysqli_fetch_array($result);
+								echo htmlspecialchars(stripslashes($row["views"]));
+							}
+							mysqli_free_result($result);
+							mysqli_close($con);
+						?>
+					</p></li>
 				</ul>
 			</div>
 		</div>
@@ -40,6 +86,7 @@
 					<li><a href="#tab3" data-toggle='tab'>Достижения в спорте</a></li>
 					<li><a href="#tab4" data-toggle='tab'>Мои Увлечения</a></li>
 					<li><a href="#tab5" data-toggle='tab'>Моё Мировоззрение</a></li>
+					
 		  		</ul>
 	  		</div>
 	  		<div class='col-sm-4 col-md-4 col-lg-4 col-xs-12'>

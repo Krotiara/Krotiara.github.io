@@ -64,9 +64,7 @@ color: #d1ffed;
 .tab-pane >p {
 	margin: 5px;
 }
-p{
-	color: #ecf0f1;
-	margin: 10px;}
+
 .panel{
 	background-color: transparent;
 	background:url(../images/backPanel.jpg);
@@ -76,4 +74,16 @@ p{
 	background:url(../images/backPanel.jpg);
 	color: #FFFFFF;
 }
+
+.counter
+{
+	float: right;
+	text-align:right;
+}
+.counter p{
+	margin: 15px;
+	color:#ecf0f1;
+}
+p{color: #ecf0f1;}
+
 

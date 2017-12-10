@@ -29,6 +29,8 @@ color: #d1ffed;
 a{color: #ecf0f1;}
 
 
+
+
 .thumb{
     margin-bottom: 30px;
 }
@@ -229,5 +231,16 @@ color: #87CEEB;
 	background: WhiteSmoke;
 }
 .content p{margin: 10px;}
+
+.counter
+{
+	float: right;
+	text-align:right;
+}
+.counter p{
+	margin: 15px;
+	color:#ecf0f1;
+}
+p{color: #ecf0f1;}
 
 
