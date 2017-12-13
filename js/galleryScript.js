@@ -68,6 +68,7 @@ function openGalleryBlock()
 
 }
 
+
 function openHelp()
 {
 	var help = document.getElementById('help');
@@ -233,6 +234,10 @@ function SetImgToBack()
 	document.getElementsByClassName('galleryBlock')[0].style.background = url + 'no-repeat center';
 	document.getElementsByClassName('galleryBlock')[0].style.backgroundSize = "100% 100%";
 	createCookie('background',url,1);
+}
+
+function SetReview()
+{
 }
 
 function createCookie(name,value,days)

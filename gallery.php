@@ -3,9 +3,34 @@
 <?php
 include_once "mysql_connect.php";
 #mysqli_query($con,"SElect * From hitcounter");
-mysqli_query($con,"UPDATE hitcounter SET `views` = `views`+1 WHERE id='2'");
+$currentDate = mysqli_query($con,"SELECT CURTIME() as timeNow");
+
+$test = mysqli_fetch_array($currentDate);
+$sqlOne = "SELECT HOUR('". $test['timeNow'] . "') as h";
+$sqlTwo = "SELECT MINUTE('". $test['timeNow'] . "') as m";
+$sqlThree = "SELECT SECOND('". $test['timeNow'] . "') as s";
+$currenthour = mysqli_query($con,$sqlOne);
+$currentminute = mysqli_query($con,$sqlTwo);
+$currentsecond = mysqli_query($con,$sqlThree);
+
+$ch = mysqli_fetch_array($currenthour);
+$cm = mysqli_fetch_array($currentminute);
+$cs = mysqli_fetch_array($currentsecond);
+
+$currentTime = 3600 * $ch['h'] + 60 * $cm['m'] + $cs['s'];
+$lasttime = mysqli_query($con,"SELECT lastupdate as lud FROM hitcounter WHERE id='2'");
+$lt = mysqli_fetch_array($lasttime);
+$delta = $currentTime - $lt['lud'];
+if($delta > 10 || $delta < 0)
+{
+	mysqli_query($con,"UPDATE hitcounter SET `views` = `views`+1 WHERE id='2'");
+	$cTime = mysqli_real_escape_string($con,$currentTime);
+	mysqli_query($con,"UPDATE hitcounter SET `lastupdate` = '$cTime' WHERE id='2'");
+}
 $result = mysqli_query($con,"SELECT * FROM hitcounter WHERE id='2'");
 $numResult = mysqli_num_rows($result);
+
+
 ?>
 <!--https://giphy.com/gifs/y1ZBcOGOOtlpC/html5-->
 <html>
@@ -215,11 +240,8 @@ $numResult = mysqli_num_rows($result);
 					<span class='close' onclick='closeGalleryBlock(true)'>&#10008;</span>
 						<button class='StartImg' onclick='SetStartImg()';>Сделать стартовым</button>
 						<button class='SetBackground' onclick='SetImgToBack();'>Сделать фоном</button>
-				</div>
 
-
-				
-				
+				</div>			
 			</div>
 
 		</div>

@@ -2,36 +2,41 @@
 
 <?php
 include_once "mysql_connect.php";
-#$a = "SELECT convert(varchar, " . getdate() . ", 108) outputs as hh:mm:ss";
-#$newtime = mysqli_query($con,"SELECT convert(varchar, getdate(), 108) outputs as hh:mm:ss");
-#$lasttime = mysqli_query($con,"SELECT lastupdate FROM hitcounter WHERE id='1'");
-#numtime = mysqli_num_rows($lasttime);
 
-#$row = mysqli_fetch_array($newtime);
-#$rowtwo = mysqli_fetch_array($lasttime);
-#$zapros = "SELECT DATEDIFF(MINUTE, ". $row['lastupdate'] . " , " . $rowtwo['lastupdate'] . ") AS MinuteDiff";
-#$delta = mysqli_query($con,$zapros);
-#$deltaP = mysqli_fetch_array($delta);
-#$deltatime = $deltaP['MinuteDiff'];
-#echo "1";
-#echo $rowtwo['lastupdate'];
-#echo "2";
-#echo $row['lastupdate'];
-#echo "3";
-#echo $deltatime;
-#if($deltatime > 1)
-#{
+$currentDate = mysqli_query($con,"SELECT CURTIME() as timeNow");
+
+$test = mysqli_fetch_array($currentDate);
+$sqlOne = "SELECT HOUR('". $test['timeNow'] . "') as h";
+$sqlTwo = "SELECT MINUTE('". $test['timeNow'] . "') as m";
+$sqlThree = "SELECT SECOND('". $test['timeNow'] . "') as s";
+$currenthour = mysqli_query($con,$sqlOne);
+$currentminute = mysqli_query($con,$sqlTwo);
+$currentsecond = mysqli_query($con,$sqlThree);
+
+$ch = mysqli_fetch_array($currenthour);
+$cm = mysqli_fetch_array($currentminute);
+$cs = mysqli_fetch_array($currentsecond);
+
+$currentTime = 3600 * $ch['h'] + 60 * $cm['m'] + $cs['s'];
+$lasttime = mysqli_query($con,"SELECT lastupdate as lud FROM hitcounter WHERE id='1'");
+$lt = mysqli_fetch_array($lasttime);
+$delta = $currentTime - $lt['lud'];
+if($delta > 10 || $delta < 0)
+{
 	mysqli_query($con,"UPDATE hitcounter SET `views` = `views`+1 WHERE id='1'");
-	#$zaprostwo = "UPDATE hitcounter SET `lastupdate` = " . $newtime ." WHERE id='1'";
-	#mysqli_query($con,$zaprostwo);
-
-#}
+	$cTime = mysqli_real_escape_string($con,$currentTime);
+	mysqli_query($con,"UPDATE hitcounter SET `lastupdate` = '$cTime' WHERE id='1'");
+}
 $result = mysqli_query($con,"SELECT * FROM hitcounter WHERE id='1'");
 $numResult = mysqli_num_rows($result);
 
-
-#mysqli_query($con,"SElect * From hitcounter");
-
+if(isset($_POST['SetReview']))
+{
+	$name = $_POST['Person'];
+	$review = $_POST['Review'];
+	$sql = "INSERT INTO reviews values('$review','$name')";
+	mysqli_query($con,$sql);
+}
 
 ?>
 
@@ -48,6 +53,24 @@ $numResult = mysqli_num_rows($result);
 		<title>Моё портфолио</title>
 	</head>
 	<body>
+	<div id='review' class ='review'>
+			<div class='overlay'></div>
+			<div class='title'>
+				<h4>Оставить отзыв</h4>
+				<div class='content'>
+					<form action='index.php'>
+					<p>Ваше имя:</p><br>
+					<input type='text' name='Person'><br>
+					<p>Ваш отзыв:</p><br>
+					<input type='text' name='Review'><br><br>
+
+					<input type="submit" value="Отправить" name='SetReview'>
+					</form>
+				</div>
+				<span class='close' onclick='closeReviewWindow()'>&#10008;</span>
+			</div>
+			
+	</div>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class='container-fluid'>
 			<div class='navbar-header'>
@@ -63,6 +86,7 @@ $numResult = mysqli_num_rows($result);
 					<li><a href="gallery.php">Галерея</a></li>
 					<li><a href="https://vk.com/math_mech">Страница МатМеха</a></li>
 					<li><a href="https://urfu.ru/ru/">Сайт УрФу</a></li>
+					<li><a class="reviewNav">Оставить отзыв</a></li>
 					<li class = 'counter'><p>Количество посещений:<?php
 						for($i=0;$i < $numResult;$i++)
 							{
@@ -157,5 +181,6 @@ $numResult = mysqli_num_rows($result);
 			</div>		
 		</div>
 	</div>
+	<script type="text/javascript" src='js/mainScript.js'></script>
 	</body>
 </html>
